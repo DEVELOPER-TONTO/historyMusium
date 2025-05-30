@@ -1,0 +1,52 @@
+/* src/components/IntroPage.css */
+@font-face {
+  font-family: 'Song Myung';
+  src: url('/fonts/your-font.woff2') format('woff2'); /* 이전에 네가 사용한 폰트 넣으면 됨 */
+}
+
+.intro-wrapper {
+  height: 100vh;
+  width: 100%;
+  background: url('/images/background-texture.png') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-text {
+  font-family: 'KoreanClassic', serif;
+  font-size: 2.5rem;
+  color: #3a2d13;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 1s ease, transform 1s ease;
+  text-align: center;
+  padding: 20px;
+}
+
+.intro-button {
+  font-family: 'Song Myung', serif;
+  font-size: 1.5em;
+  padding: 15px 40px;
+  background-color: rgba(255, 248, 220, 0.85);
+  border: 2px solid #6b4e3d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-up {
+  opacity: 1;
+  transform: translateY(0);
+}
