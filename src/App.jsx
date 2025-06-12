@@ -1,33 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import './Intro.css';
+// App.jsx
+import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Intro from './intro/Intro';
+import Home from './components/Home';
 
-const Intro = () => {
-  const [showText, setShowText] = useState(false);
-  const [showButton, setShowButton] = useState(false);
+function App() {
+  const [introSeen, setIntroSeen] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setShowText(true), 300);
-    const timer2 = setTimeout(() => setShowButton(true), 1500);
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-    };
+    const seen = sessionStorage.getItem('introSeen');
+    setIntroSeen(!!seen);
   }, []);
 
   return (
-    <div className="intro-container">
-      <div className={`intro-text ${showText ? 'fade-in-left' : ''}`}>
-        우리나라의 역사 속에<br />들어올 준비가 되셨습니까?
-      </div>
-      <button
-        className={`intro-button ${showButton ? 'fade-in-up' : ''}`}
-        onClick={() => window.location.href = '/main'}
-      >
-        역사 속으로
-      </button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            introSeen ? <Navigate to="/home" replace /> : <Intro />
+          }
+        />
+        <Route path="/home" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
 
-export default Intro;
-
+export default App;
