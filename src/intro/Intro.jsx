@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Intro.module.css';
-import { useNavigate } from 'react-router-dom';
 
-const Intro = () => {
+const Intro = ({ onIntroFinish }) => {
   const [showText, setShowText] = useState(false);
   const [showButton, setShowButton] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const timer1 = setTimeout(() => setShowText(true), 300);
@@ -18,7 +16,7 @@ const Intro = () => {
 
   const handleEnter = () => {
     sessionStorage.setItem('introSeen', 'true');
-    navigate('/home');
+    onIntroFinish();
   };
 
   return (
@@ -37,4 +35,3 @@ const Intro = () => {
 };
 
 export default Intro;
-

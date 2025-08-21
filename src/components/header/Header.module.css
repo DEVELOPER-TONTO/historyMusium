@@ -15,6 +15,11 @@
   font-weight: 600;
 }
 
+.logoLink {
+  text-decoration: none;
+  color: inherit;
+}
+
 .nav {
   display: flex;
   gap: 20px;
